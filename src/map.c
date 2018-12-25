@@ -50,6 +50,7 @@ void	get_size(t_map *map, int fd)
 	close(fd);
 }
 
+// validate border
 void	get_map(t_map *map, const char *filename)
 {
 	char	*line;

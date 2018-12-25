@@ -34,7 +34,7 @@ typedef struct	s_calc
 	double		side_dist_y;
 	double		delta_dist_x;
 	double		delta_dist_y;
-	double		prep_wall_dist;
+	double		perp_wall_dist;
 	int			step_x;
 	int			step_y;
 	int			side;

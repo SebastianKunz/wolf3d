@@ -45,6 +45,7 @@ void	ft_draw(t_game *game)
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
 		game->image.img_ptr, 0, 0);
 	display = ft_itoa((int)(1.0 / game->calc.frametime));
-	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 0, 0, 0x15b215, display);
+	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 0, 0,
+		0x15b215, display);
 	free(display);
 }

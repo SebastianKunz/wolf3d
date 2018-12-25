@@ -20,7 +20,7 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = ./src/
 
-SRC = main.c map.c eventhandler.c raycast.c draw.c
+SRC = main.c map.c eventhandler.c raycast_main.c raycast_wall.c floorcast.c draw.c
 
 ## OBJECTS
 
@@ -53,7 +53,7 @@ INC = -I $(LIB_HEAD) -I $(INC_DIR) -I $(MLX_HEAD)
 all: lib obj $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(FLAGS) $(LIBFT) $(MINILIB) $(FRAMEWORK) -g $^ -o $@
+	gcc -fsanitize=address $(FLAGS) $(LIBFT) $(MINILIB) $(FRAMEWORK) -g $^ -o $@
 
 ## OBJECTS RULES
 

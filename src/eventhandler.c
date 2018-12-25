@@ -93,10 +93,6 @@ int		ft_keydown(int key, void *param)
 	else if (key == 123)
 		ft_rotate(g, 1);
 	if (key >= 123 && key <= 126)
-	{
-		ft_set_black(g);
-		ft_raycast(g);
-		ft_draw(g);
-	}
+		g->status = 1;
 	return (0);
 }

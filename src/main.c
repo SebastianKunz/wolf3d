@@ -66,14 +66,30 @@ void	ft_load_image(t_game *game)
 	}
 	while (++i < TXT_COUNT)
 	{
-		if (!(game->texture[i].img_ptr = mlx_xpm_file_to_image(game->mlx.mlx_ptr, paths[i], &game->texture[i].tex_width, &game->texture[i].tex_height)))
+		if (!(game->texture[i].img_ptr = mlx_xpm_file_to_image(
+			game->mlx.mlx_ptr, paths[i], &game->texture[i].tex_width,
+				&game->texture[i].tex_height)))
 		{
 			// free more
 			free(game->texture);
 			ft_error(e_texture);
 		}
-		game->texture[i].data = mlx_get_data_addr(game->texture[i].img_ptr, &game->texture[i].bpp, &game->texture[i].sizeline, &game->texture[i].endian);
+		game->texture[i].data = mlx_get_data_addr(
+			game->texture[i].img_ptr, &game->texture[i].bpp,
+			&game->texture[i].sizeline, &game->texture[i].endian);
 	}
+}
+
+int ft_refresh(t_game *game)
+{
+	if (game->status)
+	{
+		ft_set_black(game);
+		ft_raycast(game);
+		ft_draw(game);
+	}
+	game->status = 0;
+	return (0);
 }
 
 
@@ -83,18 +99,17 @@ int main(int argc, char **argv)
 	if (argc == 2)
 	{
 		get_map(&game.map, argv[1]);
-
 		ft_init_window(&game.mlx);
 		ft_init_image(&game.image, game.mlx);
 		ft_load_image(&game);
 		ft_init_calc(&game.calc, game.map);
-		ft_raycast(&game);
-		ft_draw(&game);
+		game.status = 1;
 		mlx_hook(game.mlx.win_ptr, 3, 0, ft_keydown, (void*)&game);
 		mlx_hook(game.mlx.win_ptr, 17, 0, ft_close, (void*)&game);
+		mlx_loop_hook(game.mlx.mlx_ptr, ft_refresh, (void*)&game);
 		mlx_loop(game.mlx.mlx_ptr);
 	}
 	else
-		ft_error(4);
+		ft_error(e_usage);
 	return (0);
 }
