@@ -25,7 +25,8 @@ int		ft_color(int r, int g, int b)
 void	ft_init_image(t_image *image, t_mlx mlx)
 {
 	image->img_ptr = mlx_new_image(mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	image->data = mlx_get_data_addr(image->img_ptr, &image->bpp, &image->sizeline, &image->endian);
+	image->data = mlx_get_data_addr(image->img_ptr, &image->bpp,
+		&image->sizeline, &image->endian);
 }
 
 void	ft_put_pixel_in_image(t_image *image, int x, int y, int color)
@@ -37,28 +38,6 @@ void	ft_put_pixel_in_image(t_image *image, int x, int y, int color)
 	}
 }
 
-void	ft_put_vline(t_image image, int x, t_point y, int color)
-{
-	int i;
-
-	i = 0;
-	while (i < y.start)
-	{
-		ft_put_pixel_in_image(&image, x, i, 0x8aa5f7);
-		i++;
-	}
-	while (y.start < y.end)
-	{
-		ft_put_pixel_in_image(&image, x, y.start, color);
-		y.start++;
-	}
-	while (y.start < WIN_HEIGHT)
-	{
-		ft_put_pixel_in_image(&image, x, y.start, 0x838487);
-		y.start++;
-	}
-}
-
 void	ft_draw(t_game *game)
 {
 	char	*display;
@@ -67,6 +46,5 @@ void	ft_draw(t_game *game)
 		game->image.img_ptr, 0, 0);
 	display = ft_itoa((int)(1.0 / game->calc.frametime));
 	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 0, 0, 0x15b215, display);
-	ft_bzero(game->image.data, WIN_HEIGHT * WIN_WIDTH);
-	free (display);
+	free(display);
 }

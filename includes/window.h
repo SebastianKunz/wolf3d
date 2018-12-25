@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skunz <skunz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/22 00:05:23 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/22 00:05:24 by skunz            ###   ########.fr       */
+/*   Created: 2018/12/24 21:29:22 by skunz             #+#    #+#             */
+/*   Updated: 2018/12/24 21:29:24 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
+#ifndef WINDOW_H
+# define WINDOW_H
 
-typedef struct	s_image
+typedef	struct s_texture
 {
+	int			id;
 	void		*img_ptr;
 	char		*data;
+	int			tex_width;
+	int			tex_height;
 	int			bpp;
 	int			sizeline;
 	int			endian;
-}				t_image;
+}				t_texture;
 
-int		ft_color(int r, int g, int b);
-void	ft_put_pixel_in_image(t_image *image, int x, int y, int color);
+typedef struct	s_mlx
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+}				t_mlx;
 
 #endif

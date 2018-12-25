@@ -13,7 +13,14 @@
 #ifndef MAP_H
 # define MAP_H
 
-# include "struct.h"
+typedef struct	s_map
+{
+	int			start_x;
+	int			start_y;
+	int			**level;
+	int			width;
+	int			height;
+}				t_map;
 
 int		get_width(char *column);
 void	get_size(t_map *map, int fd);

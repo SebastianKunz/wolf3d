@@ -28,36 +28,16 @@ void	ft_error(int code)
 		ft_putstr("Map invalid: No starting point!\n");
 	else if (code == 7)
 		ft_putstr("Map invalid: starting point is out of map!\n");
+	else if (code == 8)
+		ft_putstr("Failed to load texture!\n");
 	exit(code);
-}
-
-void	ft_printmap(t_game game)
-{
-	printf("Map width: %d\n", game.map.width);
-	printf("Map height: %d\n", game.map.height);
-	for (int y = 0; y < game.map.height; y++)
-	{
-		for (int x = 0; x < game.map.width; x++)
-			printf("%d ", game.map.level[y][x]);
-		printf("\n");
-	}
 }
 
 void ft_init_window(t_mlx *mlx)
 {
 	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Wolf3d - Skunz");
-}
-
-
-
-int ft_close(void *param)
-{
-	t_game *game;
-
-	game = (t_game*)param;
-	// free all
-	exit(0);
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT,
+		"Wolfenstein 3D - skunz");
 }
 
 void	ft_load_image(t_game *game)
@@ -79,14 +59,23 @@ void	ft_load_image(t_game *game)
 		NULL
 	};
 	i = -1;
-	game->texture = malloc(sizeof(t_texture) * TXT_COUNT);
-	//check if files exists -> pointer == null
+	if (!(game->texture = malloc(sizeof(t_texture) * TXT_COUNT)))
+	{
+		//free everything
+		ft_error(e_malloc);
+	}
 	while (++i < TXT_COUNT)
 	{
-		game->texture[i].img_ptr = mlx_xpm_file_to_image(game->mlx.mlx_ptr, paths[i], &game->texture[i].tex_width, &game->texture[i].tex_height);
+		if (!(game->texture[i].img_ptr = mlx_xpm_file_to_image(game->mlx.mlx_ptr, paths[i], &game->texture[i].tex_width, &game->texture[i].tex_height)))
+		{
+			// free more
+			free(game->texture);
+			ft_error(e_texture);
+		}
 		game->texture[i].data = mlx_get_data_addr(game->texture[i].img_ptr, &game->texture[i].bpp, &game->texture[i].sizeline, &game->texture[i].endian);
 	}
 }
+
 
 int main(int argc, char **argv)
 {
@@ -94,14 +83,12 @@ int main(int argc, char **argv)
 	if (argc == 2)
 	{
 		get_map(&game.map, argv[1]);
+
 		ft_init_window(&game.mlx);
 		ft_init_image(&game.image, game.mlx);
-		//ft_printmap(game);
-		ft_init_calc(&game.calc, game.map);
 		ft_load_image(&game);
+		ft_init_calc(&game.calc, game.map);
 		ft_raycast(&game);
-
-		mlx_put_image_to_window(game.mlx.mlx_ptr, game.mlx.win_ptr, game.image.img_ptr, 20, 20);
 		ft_draw(&game);
 		mlx_hook(game.mlx.win_ptr, 3, 0, ft_keydown, (void*)&game);
 		mlx_hook(game.mlx.win_ptr, 17, 0, ft_close, (void*)&game);

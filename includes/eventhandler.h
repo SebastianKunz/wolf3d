@@ -13,8 +13,7 @@
 #ifndef EVENTHANDLER_H
 # define EVENTHANDLER_H
 
-# include "struct.h"
-
 int		ft_keydown(int key, void *param);
+int 	ft_close(void *param);
 
 #endif
