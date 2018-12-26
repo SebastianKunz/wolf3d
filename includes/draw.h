@@ -22,7 +22,7 @@ typedef struct	s_image
 	int			endian;
 }				t_image;
 
-int		ft_color(int r, int g, int b);
-void	ft_put_pixel_in_image(t_image *image, int x, int y, int color);
+void			ft_put_pixel_in_image(t_image *image, int x, int y, int color);
+void			ft_set_black(t_image *image);
 
 #endif

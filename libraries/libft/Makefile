@@ -53,7 +53,7 @@ BNUSS =	ft_lstnew.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstdel.c           \
 MYS = 	ft_intlen.c ft_islower.c ft_isupper.c ft_iswhitespace.c ft_lstsize.c \
 		ft_printinbaselower.c ft_printinbaseupper.c ft_putnbru.c ft_free2d.c \
 		ft_uintlen.c ft_lltoa_base.c ft_lllen.c ft_ulllen.c ft_putnbrll.c    \
-		ft_print_double.c ft_pow.c get_next_line.c
+		ft_print_double.c ft_pow.c get_next_line.c ft_list_push_front.c
 
 #####################################  ALL  ####################################
 

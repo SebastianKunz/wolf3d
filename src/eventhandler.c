@@ -51,27 +51,12 @@ void	ft_rotate(t_game *g, int dir)
 		+ g->calc.plane_y * cos(g->calc.rot_speed * dir);
 }
 
-int ft_close(void *param)
+int		ft_close(void *param)
 {
 	t_game *game;
 
 	game = (t_game*)param;
-	// free all
 	exit(0);
-}
-
-void	ft_set_black(t_game *g)
-{
-	int y;
-	int x;
-
-	y = -1;
-	while (++y < WIN_HEIGHT)
-	{
-		x = -1;
-		while (++x < WIN_WIDTH)
-			ft_put_pixel_in_image(&g->image, x, y, 0);
-	}
 }
 
 int		ft_keydown(int key, void *param)
@@ -80,10 +65,7 @@ int		ft_keydown(int key, void *param)
 
 	g = (t_game*)param;
 	if (key == 53 || key == 12)
-	{
-		//free everything hehe
 		exit(1);
-	}
 	else if (key == 126)
 		ft_move(g, 1);
 	else if (key == 125)

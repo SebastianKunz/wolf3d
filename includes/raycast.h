@@ -13,7 +13,7 @@
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
-#include <time.h>
+# include <time.h>
 
 typedef struct	s_calc
 {
@@ -51,6 +51,6 @@ typedef struct	s_calc
 	int			y_end;
 }				t_calc;
 
-void	ft_init_calc(t_calc *calc, t_map map);
+void			ft_init_calc(t_calc *calc, t_map map);
 
 #endif

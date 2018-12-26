@@ -12,6 +12,45 @@
 
 #include "wolf3d.h"
 
+void	set_player(t_map *map, char *col, int x, int y)
+{
+	static int isonly = 0;
+
+	if (ft_strcmp(col, "X") == 0 && !isonly)
+	{
+		if (x == 0 || x == map->width - 1)
+			ft_error(e_map_start_oom);
+		if (y == 0 || y == map->height - 1)
+			ft_error(e_map_start_oom);
+		map->start_x = y;
+		map->start_y = x;
+		isonly = 1;
+	}
+	else if (ft_strcmp(col, "X") == 0 && isonly)
+		ft_error(e_map_mult_start);
+	if (!isonly && y == map->height - 1)
+		ft_error(e_map_no_start);
+}
+
+void	populate_level(t_map *map, char *line, int x, int y)
+{
+	char **col;
+
+	col = ft_strsplit(line, ' ');
+	while (col[++x])
+	{
+		set_player(map, col[x], x, y);
+		map->level[y][x] = ft_atoi(col[x]);
+		if (map->level[y][x] == 0 && (y == 0 || y == map->height - 1
+			|| x == 0 || x == map->width - 1))
+			map->level[y][x] = 1;
+		if (map->level[y][x] < 0 || map->level[y][x] > TXT_COUNT)
+			map->level[y][x] = 0;
+		free(col[x]);
+	}
+	free(col);
+}
+
 int		get_width(char *column)
 {
 	int i;
@@ -20,22 +59,30 @@ int		get_width(char *column)
 	i = -1;
 	count = 1;
 	while (column[++i])
-		if (ft_isdigit(column[i]) && (column[i + 1] == ' ' ||
-			column[i + 1] == '\n'))
+	{
+		if ((ft_isdigit(column[i]) || column[i] == 'X') &&
+			(column[i + 1] == ' ' || column[i + 1] == '\n'))
 			count++;
-		else if (column[i] == 'X')
-			count++;
+		else if (ft_isalpha(column[i]))
+		{
+			free(column);
+			ft_error(e_map_invalid);
+		}
+	}
 	return (count);
 }
 
-void	get_size(t_map *map, int fd)
+void	get_size(t_map *map, const char *filename)
 {
 	char	*line;
 	int		i;
+	int		fd;
 
 	i = -1;
+	if ((fd = open(filename, O_RDWR)) == -1)
+		ft_error(e_open_file);
 	if (!get_next_line(fd, &line))
-		ft_error(1);
+		ft_error(e_open_file);
 	map->width = get_width(line);
 	map->height = 1;
 	free(line);
@@ -44,63 +91,34 @@ void	get_size(t_map *map, int fd)
 		if (map->width == get_width(line))
 			map->height++;
 		else
-			ft_error(1);
+		{
+			free(line);
+			ft_error(e_map_invalid);
+		}
 		free(line);
 	}
 	close(fd);
 }
 
-// validate border
 void	get_map(t_map *map, const char *filename)
 {
 	char	*line;
-	char	**col;
 	int		x;
-	int 	y;
+	int		y;
 	int		fd;
-	int		isonly;
 
 	y = -1;
-	isonly = 0;
-	if ((fd = open(filename, O_RDONLY)) == -1)
-		ft_error(3);
-	get_size(map, fd);
+	get_size(map, filename);
 	if (!(map->level = malloc(sizeof(int*) * map->height)))
-		ft_error(1);
-	if ((fd = open(filename, O_RDONLY)) == -1)
-		ft_error(3);
+		ft_error(e_map_invalid);
+	if ((fd = open(filename, O_RDWR)) == -1)
+		ft_error(e_open_file);
 	while (get_next_line(fd, &line) > 0)
 	{
 		x = -1;
 		if (!(map->level[++y] = malloc(sizeof(int) * map->width)))
-		{
-			//ft_free2d(game->map.level, y + 1);
-			ft_error(2);
-		}
-		col = ft_strsplit(line, ' ');
-		while (col[++x])
-		{
-			if (ft_strcmp(col[x], "X") == 0 && !isonly)
-			{
-				if (x == 0 || x == map->width - 1)
-					ft_error(7);
-				if (y == 0 || y == map->height - 1)
-					ft_error(7);
-				map->start_x = y;
-				map->start_y = x;
-				isonly = 1;
-			}
-			else if (ft_strcmp(col[x], "X") == 0 && isonly)
-			{
-				//free all
-				ft_error(5);
-			}
-			map->level[y][x] = ft_atoi(col[x]);
-			free(col[x]);
-		}
-		free(col);
+			ft_error(e_malloc);
+		populate_level(map, line, x, y);
 		free(line);
 	}
-	if (!isonly)
-		ft_error(6);
 }

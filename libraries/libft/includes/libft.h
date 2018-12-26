@@ -132,5 +132,7 @@ char				*ft_lltoa_base(long long n, int base);
 void				ft_putnbrll(long long n);
 unsigned long long	ft_pow(int base, int power);
 void				ft_print_double(long double n, int accuracy);
+void				ft_list_push_front(t_list **begin_list, void const *content,
+						size_t content_size);
 
 #endif

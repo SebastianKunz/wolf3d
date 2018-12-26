@@ -14,6 +14,6 @@
 # define EVENTHANDLER_H
 
 int		ft_keydown(int key, void *param);
-int 	ft_close(void *param);
+int		ft_close(void *param);
 
 #endif

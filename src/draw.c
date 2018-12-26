@@ -12,14 +12,11 @@
 
 #include "wolf3d.h"
 
-int		ft_color(int r, int g, int b)
+void	ft_init_window(t_mlx *mlx)
 {
-	int c;
-
-	c = r;
-	c = (c << 8) | g;
-	c = (c << 8) | b;
-	return (c);
+	mlx->mlx_ptr = mlx_init();
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT,
+		"Wolfenstein 3D - skunz");
 }
 
 void	ft_init_image(t_image *image, t_mlx mlx)
@@ -48,4 +45,18 @@ void	ft_draw(t_game *game)
 	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 0, 0,
 		0x15b215, display);
 	free(display);
+}
+
+void	ft_set_black(t_image *image)
+{
+	int y;
+	int x;
+
+	y = -1;
+	while (++y < WIN_HEIGHT)
+	{
+		x = -1;
+		while (++x < WIN_WIDTH)
+			ft_put_pixel_in_image(image, x, y, 0);
+	}
 }

@@ -22,8 +22,6 @@ typedef struct	s_map
 	int			height;
 }				t_map;
 
-int		get_width(char *column);
-void	get_size(t_map *map, int fd);
-void	get_map(t_map *map, const char *filename);
+void			get_map(t_map *map, const char *filename);
 
 #endif

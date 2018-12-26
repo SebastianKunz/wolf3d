@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.h                                           :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skunz <skunz@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/24 21:29:22 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/24 21:29:24 by skunz            ###   ########.fr       */
+/*   Created: 2018/12/25 19:46:29 by skunz             #+#    #+#             */
+/*   Updated: 2018/12/25 19:46:30 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#include "libft.h"
 
-typedef	struct	s_texture
+void	ft_list_push_front(t_list **begin_list, void const *content,
+	size_t content_size)
 {
-	int			id;
-	void		*img_ptr;
-	char		*data;
-	int			tex_width;
-	int			tex_height;
-	int			bpp;
-	int			sizeline;
-	int			endian;
-}				t_texture;
+	t_list *list;
 
-typedef struct	s_mlx
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-}				t_mlx;
-
-void			ft_init_image(t_image *image, t_mlx mlx);
-void			ft_init_window(t_mlx *mlx);
-
-#endif
+	if (*begin_list)
+	{
+		list = ft_lstnew(content, content_size);
+		list->next = *begin_list;
+		*begin_list = list;
+	}
+	else
+		*begin_list = ft_lstnew(content, content_size);
+}

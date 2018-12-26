@@ -33,58 +33,37 @@ void	ft_error(int code)
 	exit(code);
 }
 
-void ft_init_window(t_mlx *mlx)
+void	ft_load_texture(t_game *game)
 {
-	mlx->mlx_ptr = mlx_init();
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIN_WIDTH, WIN_HEIGHT,
-		"Wolfenstein 3D - skunz");
-}
-
-void	ft_load_image(t_game *game)
-{
-	int i;
-	char *paths[TXT_COUNT + 1] = {
-		"textures/redbrick.xpm",
-		"textures/wood.xpm",
-		"textures/greystone.xpm",
-		"textures/bluestone.xpm",
-		"textures/colorstone.xpm",
-		"textures/eagle.xpm",
-		"textures/greenlight.xpm",
-		"textures/mossy.xpm",
-		"textures/pillar.xpm",
-		"textures/purplestone.xpm",
-		"textures/barrel.xpm",
-		"textures/intra.xpm",
-		NULL
+	int			i;
+	static char	*paths[TXT_COUNT + 1] = {
+		"textures/redbrick.xpm", "textures/wood.xpm",
+		"textures/greystone.xpm", "textures/bluestone.xpm",
+		"textures/colorstone.xpm", "textures/eagle.xpm",
+		"textures/mossy.xpm", "textures/purplestone.xpm",
+		"textures/intra.xpm", NULL
 	};
+
 	i = -1;
 	if (!(game->texture = malloc(sizeof(t_texture) * TXT_COUNT)))
-	{
-		//free everything
 		ft_error(e_malloc);
-	}
 	while (++i < TXT_COUNT)
 	{
 		if (!(game->texture[i].img_ptr = mlx_xpm_file_to_image(
 			game->mlx.mlx_ptr, paths[i], &game->texture[i].tex_width,
 				&game->texture[i].tex_height)))
-		{
-			// free more
-			free(game->texture);
 			ft_error(e_texture);
-		}
 		game->texture[i].data = mlx_get_data_addr(
 			game->texture[i].img_ptr, &game->texture[i].bpp,
 			&game->texture[i].sizeline, &game->texture[i].endian);
 	}
 }
 
-int ft_refresh(t_game *game)
+int		ft_refresh(t_game *game)
 {
 	if (game->status)
 	{
-		ft_set_black(game);
+		ft_set_black(&game->image);
 		ft_raycast(game);
 		ft_draw(game);
 	}
@@ -92,16 +71,16 @@ int ft_refresh(t_game *game)
 	return (0);
 }
 
-
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_game game;
+
 	if (argc == 2)
 	{
 		get_map(&game.map, argv[1]);
 		ft_init_window(&game.mlx);
 		ft_init_image(&game.image, game.mlx);
-		ft_load_image(&game);
+		ft_load_texture(&game);
 		ft_init_calc(&game.calc, game.map);
 		game.status = 1;
 		mlx_hook(game.mlx.win_ptr, 3, 0, ft_keydown, (void*)&game);
