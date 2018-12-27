@@ -26,8 +26,9 @@ The main goal is to learn about 2D graphics in game development.
 | 7     | mossy          |
 | 8     | purplestone    |
 | 9     | intra          |
-| 10    | hitler on wood |
-| 11    | sky            |
+| 10    | sky            |
+
+[![Screen-Shot-2018-12-26-at-10-30-22-PM.png](https://i.postimg.cc/85DPjLR6/Screen-Shot-2018-12-26-at-10-30-22-PM.png)](https://postimg.cc/LqCMWY09)
 
 ### How to add new Textures
 1. Add the texture to the textures directory.
