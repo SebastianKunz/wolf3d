@@ -1,11 +1,10 @@
 # WOLF3D
 This project is part of the 42 Program. 
 
-## Usage
-- make all to create the executeable wolf3d
-  ./wolf3d [mapname] 
-- make clean to clean object files
-- make fclean to clean object files and the executable wolf3d
+## Usage ./wolf3d [mapname]
+- `make` to create the executeable wolf3d
+- `make clean` to clean object files
+- `make fclean` to clean object files and the executable wolf3d
 
 ## Possible implementations:
 - hold keys
