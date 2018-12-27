@@ -13,35 +13,20 @@ If the Number is invalid it defaults to 0 (no texture).
 Each map must have **one** starting point, represented by a `X` character instead of a number.
 
 ## Textures
-| Index | Name          |
-|:-----:|:-------------:|
-| 0     | right-aligned |
-| 1     | centered      |
-| 2     | are neat      |
-
-0 - no texture
-
-1 - redbrick
-
-2 - wood
-
-3 - greystone
-
-4 - bluestone
-
-5 - colorstone
-
-6 - eagle
-
-7 - mossy
-
-8 - purplestone
-
-9 - intra (my intra picture, please don't ask)
-
-10 - hitler on wood
-
-11 - sky
+| Index | Name           |
+|:-----:|:--------------:|
+| 0     |  no texture    |
+| 1     | redbrick       |
+| 2     | wood           |
+| 3     | greystone      |
+| 4     | bluestone      |
+| 5     | colorstone     |
+| 6     | eagle          |
+| 7     | mossy          |
+| 8     | purplestone    |
+| 9     | intra          |
+| 10    | hitler on wood |
+| 11    | sky            |
 
 ### How to add new Textures
 1. Add the texture to the textures directory.
