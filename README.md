@@ -13,6 +13,12 @@ If the Number is invalid it defaults to 0 (no texture).
 Each map must have **one** starting point, represented by a `X` character instead of a number.
 
 ## Textures
+| Index | Name          |
+|:-----:|:-------------:|
+| 0     | right-aligned |
+| 1     | centered      |
+| 2     | are neat      |
+
 0 - no texture
 
 1 - redbrick
