@@ -9,7 +9,7 @@ The main goal is to learn about 2D graphics in game development.
 - `make fclean` to clean object files and the executable wolf3d
 
 ## How to make your own map
-- A map is made up of positive integers, where every integer represents a [create an anchor](#textures)
+- A map is made up of positive integers, where every integer represents a [texture](#textures)
 - If the Number is invalid it defaults to 0 (no texture).
 - Each map must have **one** starting point, represented by a `X` character instead of a number.
 
