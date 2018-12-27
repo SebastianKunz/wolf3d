@@ -1,5 +1,6 @@
 # WOLF3D
-This project is part of the 42 Program. 
+This project is part of the 42 Program.
+The main goal is to learn about 2D graphics in game development.
 
 ## Usage
 - `make` to create the executeable wolf3d
