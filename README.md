@@ -8,4 +8,4 @@ Things I want to implement:
 - Sprites
 
 # Screenshots
-https://github.com/SebastianKunz/wolf3d/issues/1#issue-394288668
+[![Screen-Shot-2018-12-26-at-8-02-59-PM.png](https://i.postimg.cc/pLvdgXKX/Screen-Shot-2018-12-26-at-8-02-59-PM.png)](https://postimg.cc/tYry6brL)
