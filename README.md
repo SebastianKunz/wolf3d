@@ -56,6 +56,7 @@ Or use the mouse to move the camera left or right.
 - Minimap
 - Sprinting
 - Sprites
+- Controler support
 
 ## Screenshots
 [![Screen-Shot-2018-12-26-at-8-02-59-PM.png](https://i.postimg.cc/pLvdgXKX/Screen-Shot-2018-12-26-at-8-02-59-PM.png)](https://postimg.cc/tYry6brL)
