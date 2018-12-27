@@ -6,7 +6,7 @@
 /*   By: skunz <skunz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 21:04:28 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/21 19:43:45 by skunz            ###   ########.fr       */
+/*   Updated: 2018/12/27 11:00:32 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void	ft_load_texture(t_game *game)
 		"textures/greystone.xpm", "textures/bluestone.xpm",
 		"textures/colorstone.xpm", "textures/eagle.xpm",
 		"textures/mossy.xpm", "textures/purplestone.xpm",
-		"textures/intra.xpm", "textures/hitler.xpm",
-		"textures/intra_hitler.xpm", "textures/skybox.xpm",
+		"textures/intra.xpm", "textures/skybox.xpm",
 		NULL
 	};
 

@@ -6,7 +6,7 @@
 /*   By: skunz <skunz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 00:07:14 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/26 19:29:34 by skunz            ###   ########.fr       */
+/*   Updated: 2018/12/27 11:00:42 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define WIN_WIDTH 1080
 # define WIN_HEIGHT 720
-# define TXT_COUNT 12
+# define TXT_COUNT 10
 # define TXT_SIZE 64
 
 typedef struct	s_game
