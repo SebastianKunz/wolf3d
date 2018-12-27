@@ -1,8 +1,9 @@
 # WOLF3D
 This project is part of the 42 Program. 
 
-## Usage ./wolf3d [mapname]
+## Usage
 - `make` to create the executeable wolf3d
+- `./wolf3d [mapname]` to run the program. You can find maps in the ./maps directory or create your own.
 - `make clean` to clean object files
 - `make fclean` to clean object files and the executable wolf3d
 
