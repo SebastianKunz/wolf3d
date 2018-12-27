@@ -6,7 +6,7 @@
 #    By: skunz <skunz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/20 14:30:14 by skunz             #+#    #+#              #
-#    Updated: 2018/12/24 16:06:58 by skunz            ###   ########.fr        #
+#    Updated: 2018/12/26 18:52:28 by skunz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = ./src/
 
-SRC = main.c map.c eventhandler.c raycast_main.c raycast_wall.c floorcast.c draw.c
+SRC = main.c map.c eventhandler.c raycast_main.c raycast_wall.c floorcast.c \
+		draw.c movement.c
 
 ## OBJECTS
 

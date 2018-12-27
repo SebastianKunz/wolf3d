@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skunz <skunz@student.42.us.org>            +#+  +:+       +#+        */
+/*   By: skunz <skunz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 23:32:28 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/21 23:32:29 by skunz            ###   ########.fr       */
+/*   Updated: 2018/12/26 18:54:48 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,22 @@ void	ft_draw(t_game *game)
 	free(display);
 }
 
-void	ft_set_black(t_image *image)
+void	ft_set_sky(t_game *g)
 {
 	int y;
 	int x;
+	int color;
 
 	y = -1;
 	while (++y < WIN_HEIGHT)
 	{
 		x = -1;
 		while (++x < WIN_WIDTH)
-			ft_put_pixel_in_image(image, x, y, 0);
+		{
+			color = *(int *)&g->texture[TXT_COUNT - 1].data[(x
+				* g->texture[TXT_COUNT - 1].bpp >> 3) +
+				(y * g->texture[TXT_COUNT - 1].sizeline)];
+			ft_put_pixel_in_image(&g->image, x, y, color);
+		}
 	}
 }

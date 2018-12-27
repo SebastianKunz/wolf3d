@@ -23,6 +23,5 @@ typedef struct	s_image
 }				t_image;
 
 void			ft_put_pixel_in_image(t_image *image, int x, int y, int color);
-void			ft_set_black(t_image *image);
 
 #endif

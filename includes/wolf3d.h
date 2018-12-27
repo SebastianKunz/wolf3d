@@ -6,14 +6,16 @@
 /*   By: skunz <skunz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 00:07:14 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/21 17:34:03 by skunz            ###   ########.fr       */
+/*   Updated: 2018/12/26 18:51:44 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
+
 # include <math.h>
 # include <stdlib.h>
+
 # include "mlx.h"
 # include "libft.h"
 # include "eventhandler.h"
@@ -22,9 +24,10 @@
 # include "window.h"
 # include "raycast.h"
 # include "floorcast.h"
+
 # define WIN_WIDTH 1080
 # define WIN_HEIGHT 720
-# define TXT_COUNT 9
+# define TXT_COUNT 12
 # define TXT_SIZE 64
 
 typedef struct	s_game
@@ -36,7 +39,6 @@ typedef struct	s_game
 	t_floor		floor;
 	t_image		image;
 	t_texture	*texture;
-	t_list		*collector;
 }				t_game;
 
 enum	e_error
@@ -52,14 +54,13 @@ enum	e_error
 	e_texture
 };
 
-void			ft_get_frames(t_calc *calc);
-
 /*
 ** main.c
 */
 
 void			ft_error(int code);
 void			ft_load_texture(t_game *game);
+void			ft_set_sky(t_game *g);
 
 /*
 ** draw.c
@@ -84,5 +85,15 @@ void			ft_wall(t_game *g, int x);
 */
 
 void			ft_floor(t_game *g, int x);
+
+/*
+** movement.c
+*/
+
+void	ft_rotate(t_game *g, int dir);
+void	ft_move(t_game *g, int dir);
+void	ft_strafe(t_game *g, int dir);
+
+int		ft_mouse_move(int x, int y, void *param);
 
 #endif

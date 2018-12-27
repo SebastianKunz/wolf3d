@@ -41,7 +41,9 @@ void	ft_load_texture(t_game *game)
 		"textures/greystone.xpm", "textures/bluestone.xpm",
 		"textures/colorstone.xpm", "textures/eagle.xpm",
 		"textures/mossy.xpm", "textures/purplestone.xpm",
-		"textures/intra.xpm", NULL
+		"textures/intra.xpm", "textures/hitler.xpm",
+		"textures/intra_hitler.xpm", "textures/skybox.xpm",
+		NULL
 	};
 
 	i = -1;
@@ -63,7 +65,7 @@ int		ft_refresh(t_game *game)
 {
 	if (game->status)
 	{
-		ft_set_black(&game->image);
+		ft_set_sky(game);
 		ft_raycast(game);
 		ft_draw(game);
 	}
@@ -83,6 +85,7 @@ int		main(int argc, char **argv)
 		ft_load_texture(&game);
 		ft_init_calc(&game.calc, game.map);
 		game.status = 1;
+		mlx_hook(game.mlx.win_ptr, 6, 0, ft_mouse_move, (void*)&game);
 		mlx_hook(game.mlx.win_ptr, 3, 0, ft_keydown, (void*)&game);
 		mlx_hook(game.mlx.win_ptr, 17, 0, ft_close, (void*)&game);
 		mlx_loop_hook(game.mlx.mlx_ptr, ft_refresh, (void*)&game);

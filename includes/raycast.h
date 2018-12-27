@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skunz <skunz@student.42.us.org>            +#+  +:+       +#+        */
+/*   By: skunz <skunz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/22 01:11:10 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/22 01:11:12 by skunz            ###   ########.fr       */
+/*   Updated: 2018/12/26 18:21:18 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ typedef struct	s_calc
 }				t_calc;
 
 void			ft_init_calc(t_calc *calc, t_map map);
+void			ft_get_frames(t_calc *calc);
 
 #endif

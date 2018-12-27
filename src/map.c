@@ -41,11 +41,11 @@ void	populate_level(t_map *map, char *line, int x, int y)
 	{
 		set_player(map, col[x], x, y);
 		map->level[y][x] = ft_atoi(col[x]);
+		if (map->level[y][x] < 0 || map->level[y][x] > TXT_COUNT - 1)
+			map->level[y][x] = 0;
 		if (map->level[y][x] == 0 && (y == 0 || y == map->height - 1
 			|| x == 0 || x == map->width - 1))
 			map->level[y][x] = 1;
-		if (map->level[y][x] < 0 || map->level[y][x] > TXT_COUNT)
-			map->level[y][x] = 0;
 		free(col[x]);
 	}
 	free(col);

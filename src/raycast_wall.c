@@ -57,5 +57,5 @@ void	ft_get_frames(t_calc *calc)
 	calc->time = clock();
 	calc->frametime = (calc->time - calc->oldtime) / 1000;
 	calc->move_speed = calc->frametime * 30;
-	calc->rot_speed = calc->frametime * 18;
+	calc->rot_speed = calc->frametime * 5;
 }
