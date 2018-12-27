@@ -6,7 +6,7 @@
 #    By: skunz <skunz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/23 20:21:22 by skunz             #+#    #+#              #
-#    Updated: 2018/12/21 16:19:24 by skunz            ###   ########.fr        #
+#    Updated: 2018/12/26 19:19:32 by skunz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ CLEAN_NAME	= "Cleaned Library"
 all: obj $(NAME)
 
 obj:
-	mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)
 
 $(NAME): $(OBJ)
 	@ar rc $@ $^

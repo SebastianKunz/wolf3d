@@ -6,7 +6,7 @@
 /*   By: skunz <skunz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 00:07:14 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/26 18:51:44 by skunz            ###   ########.fr       */
+/*   Updated: 2018/12/26 19:29:34 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ void			ft_floor(t_game *g, int x);
 ** movement.c
 */
 
-void	ft_rotate(t_game *g, int dir);
-void	ft_move(t_game *g, int dir);
-void	ft_strafe(t_game *g, int dir);
+void			ft_rotate(t_game *g, int dir);
+void			ft_move(t_game *g, int dir);
+void			ft_strafe(t_game *g, int dir);
 
-int		ft_mouse_move(int x, int y, void *param);
+int				ft_mouse_move(int x, int y, void *param);
 
 #endif

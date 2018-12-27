@@ -6,30 +6,28 @@
 #    By: skunz <skunz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/20 14:30:14 by skunz             #+#    #+#              #
-#    Updated: 2018/12/26 18:52:28 by skunz            ###   ########.fr        #
+#    Updated: 2018/12/26 19:32:37 by skunz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-## GENERAL ##
+##################################### GENERAL ##################################
 
 NAME = wolf3d
 
-FLAGS = -Wall -Wextra -Werror
-
-## SOURCES
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 SRC_DIR = ./src/
 
-SRC = main.c map.c eventhandler.c raycast_main.c raycast_wall.c floorcast.c \
+SRC = main.c map.c eventhandler.c raycast_main.c raycast_wall.c floorcast.c    \
 		draw.c movement.c
 
-## OBJECTS
+###################################### OBJECTS #################################
 
 OBJ_DIR = ./obj/
 
 OBJ = $(addprefix $(OBJ_DIR),$(SRC:.c=.o))
 
-## libraries - framework ##
+################################ LIBRARIES - FRAMEWORK #########################
 
 LIB_DIR = ./libraries
 
@@ -39,7 +37,7 @@ MINILIB = -L $(LIB_DIR)/minilibx_macos -lmlx
 
 FRAMEWORK = -framework OpenGL -framework AppKit
 
-### HEADERS
+###################################### HEADERS #################################
 
 INC_DIR = ./includes/
 
@@ -49,38 +47,60 @@ MLX_HEAD = $(LIB_DIR)/minilibx_macos/
 
 INC = -I $(LIB_HEAD) -I $(INC_DIR) -I $(MLX_HEAD)
 
-############## RULES ##############
+###############################  COLORS AND TEXT  ##############################
+
+#COLORS
+COM_COLOR   = \033[0;36m
+NO_COLOR    = \033[m
+
+#TEXT
+COM_STRING  = "Wolf3d Compilation Successful"
+CLEAN_OBJ	= "Cleaned Wolf3d Objects"
+CLEAN_NAME	= "Cleaned Wolf3d Binary"
+
+######################################## RULES #################################
 
 all: lib obj $(NAME)
 
 $(NAME): $(OBJ)
-	gcc -fsanitize=address $(FLAGS) $(LIBFT) $(MINILIB) $(FRAMEWORK) -g $^ -o $@
+	@gcc $(FLAGS) $(LIBFT) $(MINILIB) $(FRAMEWORK) -g $^ -o $@
+	@echo "$(COM_COLOR)$(COM_STRING)$(NO_COLOR)"
 
-## OBJECTS RULES
+#OBJECTS
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	gcc $(FLAGS) $(INC) -g -c $< -o $@
+	@gcc $(FLAGS) $(INC) -g -c $< -o $@
 
 obj:
-	mkdir $(OBJ_DIR)
+	@mkdir $(OBJ_DIR)
 
-## WOLF RULES
+#WOLF
 
 clean: libclean
-	/bin/rm -rf $(OBJ_DIR)
+	@/bin/rm -rf $(OBJ_DIR)
+	@echo "$(COM_COLOR)$(CLEAN_OBJ)$(NO_COLOR)"
 
-fclean: libfclean clean
-	/bin/rm -f $(NAME)
+fclean: clean libfclean
+	@/bin/rm -f $(NAME)
+	@echo "$(COM_COLOR)$(CLEAN_NAME)$(NO_COLOR)"
 
-## LIB RULES
+#LIBFT
 
 lib:
-	make -C $(LIB_DIR)/libft/ all
+	@make -C $(LIB_DIR)/libft/ all
 
 libfclean:
-	make -C $(LIB_DIR)/libft/ fclean
+	@make -C $(LIB_DIR)/libft/ fclean
 
 libclean:
-	make -C $(LIB_DIR)/libft/ clean
+	@make -C $(LIB_DIR)/libft/ clean
+
+#MLX
+
+mlx:
+	@make -C $(LIB_DIR)/minilibx_macos/ all
+
+mlxclean:
+	@make -C $(LIB_DIR)/minilibx_macos/ clean
 
 re: fclean all
