@@ -8,6 +8,21 @@ The main goal is to learn about 2D graphics in game development.
 - `make clean` to clean object files
 - `make fclean` to clean object files and the executable wolf3d
 
+### Game controls
+<kbd>W</kbd> or <kbd>&uparrow;</kbd> To walk forward
+
+<kbd>S</kbd> or <kbd>&downarrow;</kbd> To walk backwards
+
+<kbd>A</kbd> To walk left
+
+<kbd>D</kbd> To walk right
+
+<kbd>&leftarrow;</kbd> To rotate the camera left
+
+<kbd>&rightarrow;</kbd> To rotate the camera right
+
+Or use the mouse to move the camera left or right.
+
 ## How to make your own map
 - A map is made up of positive integers, where every integer represents a [texture](#textures)
 - If the Number is invalid it defaults to 0 (no texture).
