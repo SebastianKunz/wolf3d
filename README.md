@@ -14,27 +14,16 @@ Each map must have **one** starting point, represented by a `X` character instea
 
 ## Textures
 0 - no texture
-
 1 - redbrick
-
 2 - wood
-
 3 - greystone
-
 4 - bluestone
-
 5 - colorstone
-
 6 - eagle
-
 7 - mossy
-
 8 - purplestone
-
 9 - intra (my intra picture, please don't ask)
-
 10 - hitler on wood
-
 11 - sky
 
 ### How to add new Textures
