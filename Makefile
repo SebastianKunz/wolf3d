@@ -6,7 +6,7 @@
 #    By: skunz <skunz@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/20 14:30:14 by skunz             #+#    #+#              #
-#    Updated: 2018/12/27 11:02:20 by skunz            ###   ########.fr        #
+#    Updated: 2018/12/27 11:20:24 by skunz            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = wolf3d
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 SRC_DIR = ./src/
 

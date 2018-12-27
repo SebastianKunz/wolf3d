@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skunz <skunz@student.42.us.org>            +#+  +:+       +#+        */
+/*   By: skunz <skunz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/25 12:21:49 by skunz             #+#    #+#             */
-/*   Updated: 2018/12/25 12:21:50 by skunz            ###   ########.fr       */
+/*   Updated: 2018/12/27 11:18:21 by skunz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	ft_get_frames(t_calc *calc)
 	calc->oldtime = calc->time;
 	calc->time = clock();
 	calc->frametime = (calc->time - calc->oldtime) / 1000;
-	calc->move_speed = calc->frametime * 30;
+	calc->move_speed = calc->frametime * 15;
 	calc->rot_speed = calc->frametime * 5;
 }
