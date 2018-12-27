@@ -32,7 +32,7 @@ Each map must have **one** starting point, represented by a `X` character instea
 1. Add the texture to the textures directory.
 2. Add the absolut path to `static char *paths[TXT_COUNT + 1]` in `ft_load_texture` located in `main.c`.
 3. Make sure that the last element is `NULL` and the second last element is the skybox texture.
-3. Update the Macro TXT_COUNT in wolf3d.h  
+3. Update the Macro `TXT_COUNT` in wolf3d.h  
 
 ## Planned implementations:
 - hold keys
