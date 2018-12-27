@@ -6,3 +6,6 @@ Things I want to implement:
 - Minimap
 - Sprinting
 - Sprites
+
+# Screenshots
+https://github.com/SebastianKunz/wolf3d/issues/1#issue-394288668
