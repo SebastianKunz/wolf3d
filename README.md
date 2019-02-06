@@ -2,6 +2,9 @@
 This project is part of the 42 Program.
 The main goal is to learn about 2D graphics in game development.
 
+## Preview
+[![Screen-Shot-2018-12-26-at-8-02-59-PM.png](https://i.postimg.cc/pLvdgXKX/Screen-Shot-2018-12-26-at-8-02-59-PM.png)](https://postimg.cc/tYry6brL)
+
 ## Usage
 - `make` to create the executeable wolf3d
 - `./wolf3d [mapname]` to run the program. You can find maps in the ./maps directory or create your own.
@@ -57,6 +60,3 @@ Or use the mouse to move the camera left or right.
 - Sprinting
 - Sprites
 - Controler support
-
-## Screenshots
-[![Screen-Shot-2018-12-26-at-8-02-59-PM.png](https://i.postimg.cc/pLvdgXKX/Screen-Shot-2018-12-26-at-8-02-59-PM.png)](https://postimg.cc/tYry6brL)
